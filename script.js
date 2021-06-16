@@ -37,11 +37,10 @@ function generatePassword (){
   }
   confirm("Do you want numbers included in your password?");
   if(true){
-    passwordArr = passsword.concat(numericCharacters);
+    passwordArr = passwordArr.concat(numericCharacters);
   }
 
 console.log(passwordArr);
-passwordText(length);
 }
 generatePassword();
 
