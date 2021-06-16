@@ -16,19 +16,28 @@ function writePassword() {
 }
 function generatePassword (){
   var passwordLength = window.prompt ("How many characters would you like your password to be?(8 to 128)");
-  var passwordArr;
+  var passwordArr = [];
   var length = parseInt(passwordLength)
   if (length < 8 || length > 128){
     window.alert ("This number of characters is not supported");
     generatePassword();
   }
-  var upperCase = confirm("Do you want uppercase characters?");
-  if (uppercase === true){
-    passwordArr = upperCaseCharacters.concat(passwordCharacters);
+  confirm("Do you want uppercase characters?");
+  if (true){
+    passwordArr = passwordArr.concat(upperCaseCharacters);
   }
-  var lowerCase = confirm ("DO you want to have lowercase Characters?");
-  if (lowercase===true){
-    passwordArr = lowerCaseCharacters.concat(passwordCharacters);
+
+  confirm("Do you want to have lowercase Characters?");
+  if (true){
+    passwordArr = passwordArr.concat(lowerCaseCharacters);
+  }
+  confirm("Do you want special characters in your password?");
+  if (true){
+    passwordArr = passwordArr.concat(specialCharacters);
+  }
+  confirm("Do you want numbers included in your password?");
+  if(true){
+    passwordArr = passsword.concat(numberCharacters);
   }
 }
 
