@@ -42,7 +42,22 @@ function generatePassword (){
 
 console.log(passwordArr);
 }
+function passwordText(){
+  for (var i =0; i < passwordLength; i++){
+    password += passwordArr.upperCaseCharacters.charAt(Math.floor(Math.random() * passwordLength));
+  }
+  for (var i =0; i < passwordLength; i++){
+    password += passwordArr.lowerCaseCharacters.charAt(Math.floor(Math.random() * passwordLength));
+  }
+  for (var i =0; i < passwordLength; i++){
+    password += passwordArr.specialCharacters.charAt(Math.floor(Math.random() * passwordLength));
+  }
+  for (var i =0; i < passwordLength; i++){
+    password += passwordArr.numericCharacters.charAt(Math.floor(Math.random() * passwordLength));
+  }
+};
 generatePassword();
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
