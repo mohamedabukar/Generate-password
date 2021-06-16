@@ -1,63 +1,64 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var upperCaseCharacters = ("A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z");
-var lowerCaseCharacters = ("a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z");
-var specialCharacters = ("_*&^%$#@!");
-var numericCharacters = ("0,1,2,3,4,5,6,7,8,9");
+var upperCaseCharacters = ["A","B","C","D","E"];
+var lowerCaseCharacters = ["a", "b", "c", "r", "w"];
+var specialCharacters = ["*", "!", "?"];
+var numericCharacters = ["0", "1", "4", "9"];
 var passwordCharacters = [];
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+  var passwordField = document.querySelector("#password");
+  passwordField.value = password;
 }
-function generatePassword (){
-  var passwordLength = window.prompt ("How many characters would you like your password to be?(8 to 128)");
+
+function generatePassword(){
+  var passwordLength = window.prompt("How many characters would you like your password to be?(8 to 128)");
   var passwordArr = [];
   var length = parseInt(passwordLength)
   if (length < 8 || length > 128){
     window.alert ("This number of characters is not supported");
     generatePassword();
   }
-  confirm("Do you want uppercase characters in your password?");
-  if (true){
+  
+  var choosesUppercase = confirm("Do you want uppercase characters in your password?");
+  if (choosesUppercase === true){
     passwordArr = passwordArr.concat(upperCaseCharacters);
   }
 
-  confirm("Do you want to have lowercase Characters in your password?");
-  if (true){
+  var choosesLowerCase = confirm("Do you want to have lowercase Characters in your password?");
+  if (choosesLowerCase){
     passwordArr = passwordArr.concat(lowerCaseCharacters);
   }
-  confirm("Do you want special characters in your password?");
-  if (true){
+
+  var choosesSpecial = confirm("Do you want special characters in your password?");
+  if (choosesSpecial){
     passwordArr = passwordArr.concat(specialCharacters);
   }
-  confirm("Do you want numbers included in your password?");
-  if(true){
+
+  var choosesNumbers = confirm("Do you want numbers included in your password?");
+  if(choosesNumbers){
     passwordArr = passwordArr.concat(numericCharacters);
   }
 
-console.log(passwordArr);
+  return passwordText(passwordArr, length);
 }
-function passwordText(){
-  for (var i =0; i < passwordLength; i++){
-    password += passwordArr.upperCaseCharacters.charAt(Math.floor(Math.random() * passwordLength));
-  }
-  for (var i =0; i < passwordLength; i++){
-    password += passwordArr.lowerCaseCharacters.charAt(Math.floor(Math.random() * passwordLength));
-  }
-  for (var i =0; i < passwordLength; i++){
-    password += passwordArr.specialCharacters.charAt(Math.floor(Math.random() * passwordLength));
-  }
-  for (var i =0; i < passwordLength; i++){
-    password += passwordArr.numericCharacters.charAt(Math.floor(Math.random() * passwordLength));
-  }
-};
-generatePassword();
 
+function passwordText(passwordArr, passwordLength){
+  console.log(passwordArr)
+  var passwordString = passwordArr.join(""); // joining all array elements to single string
+  var passwordStr = "";
+
+  for (var i =0; i < passwordLength; i++){
+    passwordStr += passwordString.charAt(Math.floor(Math.random() * passwordArr.length));
+  }
+
+  console.log(passwordStr)
+  return passwordStr;
+
+}
+  //writePassword(console.log(password));
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
